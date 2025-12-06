@@ -1,0 +1,383 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KIT EDUCATIVO: Markdown - Guía Completa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary': '#0f172a',
+            'accent': '#0ea5a4',
+            'secondary': '#06b6d4',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    .gradient-title {
+      background: linear-gradient(135deg, #0ea5a4 0%, #06b6d4 50%, #0891b2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(14, 165, 164, 0.15);
+    }
+    .quiz-feedback.correcta {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      border-left: 4px solid #10b981;
+      color: #065f46;
+    }
+    .quiz-feedback.incorrecta {
+      background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+      border-left: 4px solid #ef4444;
+      color: #7f1d1d;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-cyan-50 to-slate-100 min-h-screen">
+  <nav class="sticky top-0 z-50 backdrop-blur-md border-b border-slate-200/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-2">
+          <div class="w-10 h-10 bg-gradient-to-br from-accent to-secondary rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-lg">#️⃣</span>
+          </div>
+          <span class="font-bold text-primary text-lg hidden sm:inline">Markdown Kit</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <button class="px-4 py-2 text-sm font-semibold text-accent hover:text-secondary transition">
+            Recursos
+          </button>
+          <button class="px-4 py-2 bg-gradient-to-r from-accent to-secondary text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-accent/30 transition">
+            Descargar Kit
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <header class="mb-16">
+      <div class="text-center mb-8">
+        <div class="inline-block bg-gradient-to-r from-accent/10 to-secondary/10 text-accent font-semibold px-4 py-2 rounded-full text-sm mb-4 border border-accent/20">
+           Material Educativo Profesional
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 gradient-title">Markdown - Guía Completa</h1>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          Aprende a dominar Markdown, el lenguaje de marcado universal para crear documentos bien formateados, notas, blogs y mucho más de manera simple y elegante.
+        </p>
+      </div>
+    </header>
+
+    <div class="grid grid-cols-1 gap-8 mb-12">
+      <div class="space-y-8">
+        
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <div class="p-8 border-b border-slate-100">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-2 h-8 bg-gradient-to-b from-accent to-secondary rounded-full"></div>
+              <h2 class="text-2xl font-bold text-primary">Elementos de Markdown</h2>
+            </div>
+            <img src="{{ link_infografia }}" alt="Infografía Markdown" class="w-full h-auto rounded-xl shadow-md object-cover">
+          </div>
+
+          <div class="p-8 bg-gradient-to-br from-slate-50 to-cyan-50">
+            <h3 class="font-semibold text-primary mb-6 flex items-center gap-2">
+              <span class="text-xl">📦</span> Materiales Disponibles
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <a href="{{ link_guia_pdf }}" target="_blank" rel="noopener noreferrer" 
+                class="card-hover group bg-white rounded-xl p-6 border border-slate-200 hover:border-accent/30">
+                <div class="flex items-center gap-4 mb-3">
+                  <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center text-white font-bold shadow-md">
+                    PDF
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-primary group-hover:text-accent transition">Guía Técnica</h4>
+                    <p class="text-sm text-slate-500">Visualizar PDF</p>
+                  </div>
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed">Documento completo con pasos detallados, ejemplos prácticos y mejores prácticas.</p>
+              </a>
+
+              <a href="{{ link_presentacion_slides }}" target="_blank" rel="noopener noreferrer"
+                class="card-hover group bg-white rounded-xl p-6 border border-slate-200 hover:border-accent/30">
+                <div class="flex items-center gap-4 mb-3">
+                  <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center text-white font-bold shadow-md">
+                    PPT
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-primary group-hover:text-accent transition">Presentación</h4>
+                    <p class="text-sm text-slate-500">Ver slides</p>
+                  </div>
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed">Presentación profesional con visuales claros y explicaciones sobre Markdown.</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <div class="p-8 border-b border-slate-100">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-2 h-8 bg-gradient-to-b from-secondary to-accent rounded-full"></div>
+              <h2 class="text-2xl font-bold text-primary">Tutorial Markdown</h2>
+            </div>
+          </div>
+          <div class="p-8 bg-gradient-to-br from-slate-50 to-cyan-50">
+            <div class="video-wrapper shadow-lg rounded-xl overflow-hidden">
+              <iframe src="https://www.youtube.com/embed/OpPGgiUCZx4" 
+                title="Tutorial Markdown - YouTube" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+              </iframe>
+            </div>
+            <p class="mt-6 text-slate-600 text-sm leading-relaxed flex items-start gap-2">
+              <span class="text-lg">▶️</span>
+              <span>Aprende de forma visual cómo usar Markdown, desde lo básico hasta técnicas avanzadas para formatear texto, crear listas y estructurar documentos profesionales.</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <section class="mt-16 mb-12">
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div class="p-8 bg-gradient-to-r from-accent to-secondary">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-2xl">📝</span>
+            <h3 class="text-3xl font-bold text-white">Quiz - Pon a Prueba tus Conocimientos</h3>
+          </div>
+          <p class="text-accent-100 text-base">Verifica lo que has aprendido sobre Markdown</p>
+        </div>
+
+        <form id="quizForm" class="p-8 space-y-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="space-y-3">
+              <div class="flex items-start gap-3 pb-3 border-b-2 border-slate-200">
+                <span class="font-bold text-xl text-accent flex-shrink-0">1</span>
+                <p class="font-semibold text-primary text-sm leading-relaxed">¿Cuál es la sintaxis correcta para crear un encabezado de nivel 1 en Markdown?</p>
+              </div>
+              <div class="space-y-2 pl-8">
+                <label class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                  <input type="radio" name="pregunta1" value="incorrecta" class="w-4 h-4 text-accent cursor-pointer">
+                  <span class="text-sm text-slate-700 font-mono">*Título importante*</span>
+                </label>
+                <label class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                  <input type="radio" name="pregunta1" value="correcta" class="w-4 h-4 text-accent cursor-pointer">
+                  <span class="text-sm text-slate-700 font-mono"># Título importante</span>
+                </label>
+                <label class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                  <input type="radio" name="pregunta1" value="incorrecta" class="w-4 h-4 text-accent cursor-pointer">
+                  <span class="text-sm text-slate-700 font-mono">Título importante</span>
+                </label>
+              </div>
+              <div class="quiz-feedback text-xs font-semibold px-3 py-2 rounded-lg mt-2 hidden" id="feedback1"></div>
+            </div>
+
+            <div class="space-y-3">
+              <div class="flex items-start gap-3 pb-3 border-b-2 border-slate-200">
+                <span class="font-bold text-xl text-accent flex-shrink-0">2</span>
+                <p class="font-semibold text-primary text-sm leading-relaxed">¿Cuál es la sintaxis para crear un enlace en Markdown?</p>
+              </div>
+              <div class="space-y-2 pl-8">
+                <label class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                  <input type="radio" name="pregunta2" value="incorrecta" class="w-4 h-4 text-accent cursor-pointer">
+                  <span class="text-sm text-slate-700 font-mono">[texto](url)</span>
+                </label>
+                <label class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                  <input type="radio" name="pregunta2" value="incorrecta" class="w-4 h-4 text-accent cursor-pointer">
+                  <span class="text-sm text-slate-700 font-mono">&lt;a&gt;texto&lt;/a&gt;</span>
+                </label>
+                <label class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                  <input type="radio" name="pregunta2" value="correcta" class="w-4 h-4 text-accent cursor-pointer">
+                  <span class="text-sm text-slate-700 font-mono">[texto del enlace](https://ejemplo.com)</span>
+                </label>
+              </div>
+              <div class="quiz-feedback text-xs font-semibold px-3 py-2 rounded-lg mt-2 hidden" id="feedback2"></div>
+            </div>
+
+            <div class="space-y-3">
+              <div class="flex items-start gap-3 pb-3 border-b-2 border-slate-200">
+                <span class="font-bold text-xl text-accent flex-shrink-0">3</span>
+                <p class="font-semibold text-primary text-sm leading-relaxed">¿Cómo se crean listas con viñetas en Markdown?</p>
+              </div>
+              <div class="space-y-2 pl-8">
+                <label class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                  <input type="radio" name="pregunta3" value="incorrecta" class="w-4 h-4 text-accent cursor-pointer">
+                  <span class="text-sm text-slate-700 font-mono">1) Primer elemento</span>
+                </label>
+                <label class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                  <input type="radio" name="pregunta3" value="correcta" class="w-4 h-4 text-accent cursor-pointer">
+                  <span class="text-sm text-slate-700 font-mono">- Elemento con viñeta</span>
+                </label>
+                <label class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-50 cursor-pointer transition">
+                  <input type="radio" name="pregunta3" value="incorrecta" class="w-4 h-4 text-accent cursor-pointer">
+                  <span class="text-sm text-slate-700 font-mono">+ Elemento con plus</span>
+                </label>
+              </div>
+              <div class="quiz-feedback text-xs font-semibold px-3 py-2 rounded-lg mt-2 hidden" id="feedback3"></div>
+            </div>
+          </div>
+
+          <div class="flex justify-center pt-6">
+            <button type="button" onclick="verificarRespuestas()" 
+              class="px-8 py-3 bg-gradient-to-r from-accent to-secondary text-white font-bold rounded-lg hover:shadow-lg hover:shadow-accent/30 transition-all duration-300 transform hover:-translate-y-1">
+              ✓ Verificar Respuestas
+            </button>
+          </div>
+          <div class="quiz-result text-center text-base font-semibold px-6 py-4 rounded-lg mt-6 hidden border-l-4 border-accent bg-gradient-to-r from-accent/5 to-secondary/5" id="quizResult"></div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <footer class="bg-primary text-white mt-20 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <h4 class="font-bold text-lg mb-4">Markdown Kit</h4>
+          <p class="text-slate-300 text-sm leading-relaxed">Plataforma educativa profesional para dominar Markdown y crear documentos profesionales de forma simple y elegante.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-4">Enlaces Rápidos</h4>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><a href="#" class="hover:text-accent transition">Documentación</a></li>
+            <li><a href="#" class="hover:text-accent transition">Tutoriales</a></li>
+            <li><a href="#" class="hover:text-accent transition">Soporte</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-4">Recursos</h4>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><a href="{{ link_guia_pdf }}" target="_blank" class="hover:text-accent transition">Descargar Guía PDF</a></li>
+            <li><a href="{{ link_presentacion_slides }}" target="_blank" class="hover:text-accent transition">Ver Presentación</a></li>
+            <li><a href="#" class="hover:text-accent transition">Certificación</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-700 pt-8 text-center text-slate-400 text-sm">
+        <p>&copy; 2024 Markdown Kit Educativo. Todos los derechos reservados. | Diseñado con ❤️ para la educación en Markdown</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function verificarRespuestas() {
+      const respuestasCorrectas = {
+        'pregunta1': 'correcta',
+        'pregunta2': 'correcta',
+        'pregunta3': 'correcta'
+      };
+
+      let puntuacion = 0;
+      let totalPreguntas = 3;
+
+      for (let i = 1; i <= totalPreguntas; i++) {
+        const nombrePregunta = 'pregunta' + i;
+        const respuestaSeleccionada = document.querySelector('input[name="' + nombrePregunta + '"]:checked');
+        const feedbackDiv = document.getElementById('feedback' + i);
+
+        feedbackDiv.textContent = '';
+        feedbackDiv.classList.remove('correcta', 'incorrecta');
+        feedbackDiv.classList.add('hidden');
+
+        if (!respuestaSeleccionada) {
+          feedbackDiv.textContent = '⚠️ Selecciona una opción';
+          feedbackDiv.classList.remove('hidden');
+          feedbackDiv.classList.add('incorrecta');
+        } else {
+          const valorRespuesta = respuestaSeleccionada.value;
+
+          if (valorRespuesta === respuestasCorrectas[nombrePregunta]) {
+            feedbackDiv.textContent = '✓ ¡Correcto!';
+            feedbackDiv.classList.remove('hidden');
+            feedbackDiv.classList.add('correcta');
+            puntuacion++;
+          } else {
+            const respuestaCorrecta = document.querySelector('input[name="' + nombrePregunta + '"][value="correcta"]').nextElementSibling.textContent;
+            feedbackDiv.textContent = '✗ Incorrecta. Respuesta: ' + respuestaCorrecta;
+            feedbackDiv.classList.remove('hidden');
+            feedbackDiv.classList.add('incorrecta');
+          }
+        }
+      }
+
+      const resultDiv = document.getElementById('quizResult');
+      const porcentaje = Math.round((puntuacion / totalPreguntas) * 100);
+      let mensaje = '';
+
+      if (puntuacion === totalPreguntas) {
+        mensaje = `¡Excelente! Respondiste correctamente todas las preguntas (${puntuacion}/${totalPreguntas})`;
+        resultDiv.classList.remove('hidden');
+        resultDiv.classList.add('border-green-400', 'bg-green-50', 'text-green-700');
+      } else if (puntuacion >= 2) {
+        mensaje = `¡Buen desempeño! Acertaste ${puntuacion} de ${totalPreguntas} preguntas (${porcentaje}%)`;
+        resultDiv.classList.remove('hidden');
+        resultDiv.classList.add('border-blue-400', 'bg-blue-50', 'text-blue-700');
+      } else {
+        mensaje = `Necesitas repasar. Acertaste ${puntuacion} de ${totalPreguntas} preguntas (${porcentaje}%)`;
+        resultDiv.classList.remove('hidden');
+        resultDiv.classList.add('border-amber-400', 'bg-amber-50', 'text-amber-700');
+      }
+
+      resultDiv.textContent = mensaje;
+    }
+
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        const preguntaNum = this.name.replace('pregunta', '');
+        const feedbackDiv = document.getElementById('feedback' + preguntaNum);
+        if (feedbackDiv) {
+          feedbackDiv.textContent = '';
+          feedbackDiv.className = 'quiz-feedback text-xs font-semibold px-3 py-2 rounded-lg mt-2 hidden';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
